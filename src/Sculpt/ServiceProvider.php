@@ -3,6 +3,8 @@
 	namespace Quellabs\Canvas\Handlebars\Sculpt;
 	
 	use Quellabs\Sculpt\Application;
+	use Quellabs\Canvas\Latte\Sculpt\InitCommand;
+	use Quellabs\Canvas\Latte\Sculpt\ClearCacheCommand;
 	
 	/**
 	 * Service Provider for Handlebars template engine integration
@@ -17,7 +19,8 @@
 		 */
 		public function register(Application $application): void {
 			$this->registerCommands($application, [
-				ClearCacheCommand::class,
+				InitCommand::class,        // Publish the config file
+				ClearCacheCommand::class,  // Register the handlebars:clear-cache command
 			]);
 		}
 	}
